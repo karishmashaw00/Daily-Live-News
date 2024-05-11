@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/YouTube-Lite/static/css/main.7026a612.css",
+    "main.js": "/YouTube-Lite/static/js/main.a09779fc.js",
+    "index.html": "/YouTube-Lite/index.html",
+    "main.7026a612.css.map": "/YouTube-Lite/static/css/main.7026a612.css.map",
+    "main.a09779fc.js.map": "/YouTube-Lite/static/js/main.a09779fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7026a612.css",
+    "static/js/main.a09779fc.js"
+  ]
+}
