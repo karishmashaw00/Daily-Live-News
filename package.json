@@ -3,6 +3,7 @@
   "name": "youtube-lite",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@tailwindcss/line-clamp": "^0.4.4",
