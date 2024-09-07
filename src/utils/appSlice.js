@@ -5,7 +5,7 @@ const appSlice = createSlice({
     initialState:{
         open:true, 
         video:[],
-        category:"All",
+        category:"News",
         searchSuggestion:[],
     },
     reducers:{

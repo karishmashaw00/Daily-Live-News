@@ -18,7 +18,7 @@ const VideoCart = ({item}) => {
   },[])
   
   return (
-    <div className='w-94 cursor-pointer my-2 '>
+    <div className=' w-96 cursor-pointer my-2 '>
       <img className='rounded-xl w-full ' src={item.snippet.thumbnails.high.url} alt='video'/>
       <div>
         <div className='flex mt-2'>

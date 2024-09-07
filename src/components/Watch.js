@@ -3,12 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import API_KEY from "../constant/youtube";
 import axios from "axios";
 import Avatar from "react-avatar";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
-import { PiShareFatLight } from "react-icons/pi";
-import { GoDownload } from "react-icons/go";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { LuSendHorizonal } from "react-icons/lu";
-import LiveChat from "./LiveChat";
+// import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+// import { PiShareFatLight } from "react-icons/pi";
+// import { GoDownload } from "react-icons/go";
+// import { BsThreeDotsVertical } from "react-icons/bs";
+// import { LuSendHorizonal } from "react-icons/lu";
+// import LiveChat from "./LiveChat";
 import { useDispatch } from "react-redux";
 import { setMessage } from "../utils/chatSlice";
 
@@ -18,6 +18,7 @@ const Watch = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   const dispatch = useDispatch();
+  const [ytIcon, setYtIcon] = useState("");
 
   const getSingleVideo = async () => {
     try {
@@ -39,9 +40,21 @@ const Watch = () => {
     getSingleVideo();
   }, []);
 
+  const getYoutubeChannelName = async () =>{
+    try {
+        const res = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${singleVideo.snippet.channelId}&key=${API_KEY}`)
+        setYtIcon(res.data.items[0].snippet.thumbnails.high.url);
+    } catch (error) {
+        console.log(error);
+    }
+}
+useEffect(()=>{
+  getYoutubeChannelName();
+},[])
+
   return (
     <div className=" flex ml-3 w-[100%] mt-2 sm:">
-      <div className=" w-[88%] ">
+      <div className=" w-[70%] ">
         <div className="max-sm: m-3" > 
           <iframe
             className=" w-full aspect-video items-center ml-3 "
@@ -59,7 +72,7 @@ const Watch = () => {
             <div className="flex items-center justify-between w-[35%]">
               <div className="flex mt-2 m-1">
                 <Avatar
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                  src={ytIcon}
                   size={40}
                   round={true} 
                 />
@@ -67,33 +80,12 @@ const Watch = () => {
                   {singleVideo?.snippet?.channelTitle}
                 </h1>
               </div>
-              <button className="px-4 py-1 font-medium bg-black text-white rounded-full ">
-                Subscribe
-              </button>
             </div>
-            <div className="flex justify-between items-center w-[40%] mt-2  ">
-              <div className="flex gap-0 ">
-                <div className=" items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-l-full hover:bg-gray-300 ">
-                  <AiOutlineLike size="20px" />
-                </div>
-                <div className=" items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-r-full hover:bg-gray-300 ">
-                  <AiOutlineDislike size="20px   " />
-                </div>
-              </div>
-
-              <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 ml-1">
-                <PiShareFatLight size="20px" className="mr-2" />
-                <span>Share</span>
-              </div>
-              <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 ml-1">
-                <GoDownload />
-                <span className="ml-1">Download</span>
-              </div>
-            </div>
+            
           </div>
         </div>
 
-        <div className="w-[100%] border border-gray-300 ml-8 rounded-lg h-fit p-4 mt-4 ">
+        {/* <div className="w-[100%] border border-gray-300 ml-8 rounded-lg h-fit p-4 mt-4 ">
           <div className="flex justify-between items-center">
             <h1>Top Chat</h1>
             <BsThreeDotsVertical />
@@ -123,7 +115,7 @@ const Watch = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

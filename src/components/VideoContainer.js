@@ -10,7 +10,7 @@ import { setHomeVideo } from '../utils/appSlice';
 
 const VideoContainer = () => {
     const { video, category } = useSelector((store) => store.app);
-    console.log(category);
+    // console.log(category);
     const dispatch = useDispatch();
     // jab bhi api call/network call kr rhe ho toh apko hmesha useEffect use krna hai
     const fetchingYoutubeVideo = async () => {
@@ -39,7 +39,7 @@ const VideoContainer = () => {
     }, [category]);
 
     return (
-        <div className='grid grid-cols-3 gap-3 max-sm:grid-cols-1 max-lg:grid-cols-2 '>
+        <div className='grid grid-cols-3 gap-2 max-sm:grid-cols-1 max-lg:grid-cols-2 ml-1'>
             {
                 video.map((item) => {
                     console.log(item);

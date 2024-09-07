@@ -5,6 +5,7 @@ import Watch from "./components/Watch";
 import Feed from "./components/Feed";
 
 
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,7 @@ function App(){
   return (
       <div>
         <Navbar/>
+    
         <RouterProvider router={appRouter}/>
       </div>
     

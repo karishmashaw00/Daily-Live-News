@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { MdOutlineVideoCall } from "react-icons/md";
-import Avatar from "react-avatar";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,6 +8,7 @@ import {
 } from "../utils/appSlice";
 import axios from "axios";
 import { SEARCH_SUGGESTION_API } from "../constant/youtube";
+import logo from "../assest/news logo.png";
 
 const Navbar = () => {
   const [input, setInput] = useState("");
@@ -55,22 +52,15 @@ const Navbar = () => {
   }, [input]);
 
   return (
-    <div className="flex fixed top-0 justify-center items-center w-[100%] z-10 bg-white">
+    <div className="flex fixed top-0 justify-center items-center w-[100%] z-10 bg-gray-100">
       <div className="flex w-[96%] items-center  py-3 justify-between">
         <div className="flex items-center" >
-          <GiHamburgerMenu
-            onClick={toggleHandler}
-            className="size-8 cursor-pointer" 
-          />
-          <img
-            className="px-4  cursor-pointer"
-            width={"115px"} 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1280px-Logo_of_YouTube_%282015-2017%29.svg.png"
-            alt="Yt-Logo" 
-          />
-          
+        <img src={logo} alt="logo" className=" w-14 p-2" ></img>
+        <a class="navbar-brand text-3xl font-bold" href="/">Daily News</a>
         </div>
         <div className="flex w-[40%] items-center ">
+        {/* <a href="/live">Live</a> */}
+
           <div className="w-[100%] flex">
             <input
               value={input} onFocus={openSuggestion}
@@ -105,16 +95,7 @@ const Navbar = () => {
           }
         </div>
 
-        <div className="flex items-center w-[13%] justify-between">
-          <MdOutlineVideoCall className="size-10 cursor-pointer" />
-          <IoIosNotificationsOutline className=" size-10 cursor-pointer" />
-          <Avatar
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-            size={35}
-            round={true}
-            className=" cursor-pointer"
-          />
-        </div>
+        
       </div>
     </div>
   );
