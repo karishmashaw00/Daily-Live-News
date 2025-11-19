@@ -1,6 +1,6 @@
-# 🚀 **PulseFeed – Real-Time Frontend News Platform**
+# 🚀 **DailyCast – Real-Time Frontend News Platform**
 
-**PulseFeed** is a modern, responsive news dashboard built using **React.js**, **Tailwind CSS**, and **REST APIs**.
+**DailyCast** is a modern, responsive news dashboard built using **React.js**, **Tailwind CSS**, and **REST APIs**.
 It delivers **real-time trending news**, a clean UI, and fast load performance optimized for smooth user experience.
 
 ---
@@ -41,6 +41,11 @@ PulseFeed/
 └── README.md
 
 ---
+
+
+---
+
+
 
 ## 📌 **Future Improvements**
 
